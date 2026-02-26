@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DURI - Smart Baby Care Solutions from Korea</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Quicksand', sans-serif; scroll-behavior: smooth; }
+        .brand-blue { color: #333333; }
+        .bg-brand-blue { background-color: #333333; }
+        .bg-soft-blue { background-color: #F5F1ED; }
+        h1, h2, h3 { text-transform: uppercase; letter-spacing: 0.06em; }
+        
+        /* Gradient backgrounds */
+        .bg-gradient-soft { 
+            background: linear-gradient(135deg, #F5F1ED 0%, #E8E3DD 100%);
+        }
+        
+        /* Animated gradient */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Number badge */
+        .number-badge {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #333333 0%, #555555 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
+        }
+        
+        /* Notification popup */
+        .notification-popup {
+            animation: slideInRight 0.5s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(240px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .notification-popup:hover {
+            transform: translateY(-2px);
+            transition: transform 0.2s ease;
+        }
+        
+        /* Shimmer effect */
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="text-gray-800 bg-white">
+
+    <!-- PHẦN 1: NỘI DUNG CHÍNH (Hiển thị mặc định) -->
+    <div id="main-content">
+        <!-- Navigation -->
+        <nav id="navbar" class="fixed w-full bg-white/90 backdrop-blur-md z-50 py-4 shadow-sm transition-all duration-300">
+            <div class="container mx-auto px-6 flex justify-between items-center">
+                <div id="logo" class="text-2xl font-bold brand-blue tracking-tighter transition-colors duration-300">DURI</div>
+                <div id="nav-links" class="hidden md:flex space-x-8 text-sm font-semibold uppercase text-gray-800">
+                    <a href="#features" class="nav-link hover:text-blue-500 transition-colors duration-300">Sản phẩm</a>
+                    <a href="#pricing" class="nav-link hover:text-blue-500 transition-colors duration-300">Ưu đãi</a>
+                    <a href="#certification" class="nav-link hover:text-blue-500 transition-colors duration-300">Chứng nhận</a>
+                    <a href="#reviews" class="nav-link hover:text-blue-500 transition-colors duration-300">Đánh giá</a>
+                    <a href="#faq" class="nav-link hover:text-blue-500 transition-colors duration-300">FAQ</a>
+                    <a href="#form" class="nav-link hover:text-blue-500 transition-colors duration-300">Liên hệ</a>
+                </div>
+                <a href="#form" id="cta-button" class="bg-brand-blue text-white px-6 py-2 rounded-full font-bold hover:bg-gray-700 transition-all shadow-md">Tư Vấn Ngay</a>
+            </div>
+        </nav>
+
+        <!-- Section 1: Intro (Hero) -->
+        <section class="pt-32 pb-20 bg-gradient-soft relative overflow-hidden">
+            <!-- Decorative circles -->
+            <div class="absolute top-20 right-20 w-64 h-64 bg-white/30 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 left-20 w-96 h-96 bg-white/20 rounded-full blur-3xl"></div>
+            
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="inline-block bg-brand-blue text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+                        🔥 FLASH SALE - Giảm giá đến 30%
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-900 max-w-lg">
+                        DURI – Smart Baby Care Solutions from Korea
+                    </h1>
+                    <p class="text-xl mb-6 text-gray-600 leading-relaxed max-w-lg">
+                        Đồng hành cùng 1 triệu cha mẹ, mang lại sự an tâm tuyệt đối cho sự phát triển của trẻ nhỏ.
+                    </p>
+                    
+                    <!-- Countdown Timer -->
+                    <div class="bg-white/80 backdrop-blur p-4 rounded-xl inline-block mb-6 shadow-lg">
+                        <div class="text-sm font-semibold text-gray-600 mb-2">⏰ Ưu đãi kết thúc sau:</div>
+                        <div id="countdown" class="flex gap-4 text-center">
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900" id="hours">00</div>
+                                <div class="text-xs text-gray-500">Giờ</div>
+                            </div>
+                            <div class="text-3xl font-bold">:</div>
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900" id="minutes">00</div>
+                                <div class="text-xs text-gray-500">Phút</div>
+                            </div>
+                            <div class="text-3xl font-bold">:</div>
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900" id="seconds">00</div>
+                                <div class="text-xs text-gray-500">Giây</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <a href="#form" class="bg-brand-blue text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg hover:scale-105 transition-transform inline-block hover:bg-gray-700">
+                            Nhận Tư Vấn Miễn Phí
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 float-animation">
+                    <img src="images/anh1.jpeg" alt="DURI Baby" class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Customer Benefits -->
+        <section id="benefits" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">Tại sao cha mẹ tin dùng DURI?</h2>
+                <p class="text-gray-600 mb-16 text-lg">Được hơn 1 triệu gia đình trên thế giới lựa chọn</p>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="p-8 rounded-2xl bg-gradient-soft border border-gray-100 shadow-xl hover:-translate-y-2 transition-all hover:shadow-2xl">
+                        <div class="number-badge">01</div>
+                        <h3 class="text-xl font-bold mb-4">An Toàn Tuyệt Đối</h3>
+                        <p class="text-gray-600 text-sm">Kháng khuẩn 99.9% và hệ thống lọc 3 giai đoạn loại bỏ hoàn toàn tạp chất.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-gradient-soft border border-gray-100 shadow-xl hover:-translate-y-2 transition-all hover:shadow-2xl">
+                        <div class="number-badge">02</div>
+                        <h3 class="text-xl font-bold mb-4">Tiết Kiệm Thời Gian</h3>
+                        <p class="text-gray-600 text-sm">Thiết kế thông minh giúp việc vệ sinh cho bé trở nên nhẹ nhàng, nhanh chóng.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-gradient-soft border border-gray-100 shadow-xl hover:-translate-y-2 transition-all hover:shadow-2xl">
+                        <div class="number-badge">03</div>
+                        <h3 class="text-xl font-bold mb-4">Tiết Kiệm Chi Phí</h3>
+                        <p class="text-gray-600 text-sm">Vòi sen Eco-friendly giúp giảm tới 30% lượng nước tiêu thụ hàng tháng.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 & 4: Key Features -->
+        <section id="features" class="py-20 bg-white relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-30"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-50 rounded-full blur-3xl opacity-30"></div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <div class="inline-block px-6 py-2 bg-gradient-soft rounded-full text-sm font-bold text-gray-600 mb-4">
+                        ✨ SẢN PHẨM NỔI BẬT
+                    </div>
+                    <h2 class="text-4xl font-bold mb-4">
+                        <span class="text-gray-900">"Designed by Mothers,</span><br>
+                        <span class="text-gray-900">For Mothers"</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg">Thiết kế dành riêng cho trẻ em Việt Nam</p>
+                </div>
+                
+                <!-- Product 1: Potty Seat -->
+                <div class="flex flex-col md:flex-row items-center mb-20 gap-12">
+                    <div class="md:w-1/2">
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform"></div>
+                            <img src="images/pottyseat4.0.jpg" alt="Potty Seat" class="relative rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="inline-block bg-blue-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                            Flagship Product
+                        </div>
+                        <h3 class="text-4xl font-bold mb-6 text-gray-900">DURI Potty Seat 4.0</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Giải pháp toilet training thông minh, giúp bé tự lập từ sớm</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 p-4 bg-gradient-soft rounded-xl hover:shadow-md transition">
+                                <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white text-xs">✓</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Ghế kép cho cả người lớn và trẻ em</div>
+                                    <div class="text-sm text-gray-600">Thiết kế 2 trong 1 tiện lợi</div>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 bg-gradient-soft rounded-xl hover:shadow-md transition">
+                                <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white text-xs">✓</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Nút bấm âm thanh vui nhộn giúp bé thích thú</div>
+                                    <div class="text-sm text-gray-600">Kích thích hứng thú cho bé</div>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 bg-gradient-soft rounded-xl hover:shadow-md transition">
+                                <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white text-xs">✓</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Đệm chống trượt 6 điểm an toàn</div>
+                                    <div class="text-sm text-gray-600">Bám chắc, không di chuyển</div>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 bg-gradient-soft rounded-xl hover:shadow-md transition">
+                                <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white text-xs">✓</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Nhựa PP cao cấp không chứa BPA</div>
+                                    <div class="text-sm text-gray-600">100% an toàn cho trẻ em</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Product 2: Showerhead -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/2">
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl transform -rotate-3 group-hover:-rotate-6 transition-transform"></div>
+                            <img src="images/ato.jpg" alt="Showerhead" class="relative rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="inline-block bg-purple-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                            Premium Filter
+                        </div>
+                        <h3 class="text-4xl font-bold mb-6 text-gray-900">Ultra Ato Filter Showerhead</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Bảo vệ làn da nhạy cảm của bé với công nghệ lọc 3 tầng</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 p-4 bg-gradient-soft rounded-xl hover:shadow-md transition">
+                                <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white text-xs">✓</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Lọc 3 tầng (Sediment - Kháng khuẩn - Carbon)</div>
+                                    <div class="text-sm text-gray-600">Công nghệ lọc hiện đại từ Hàn Quốc</div>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 bg-gradient-soft rounded-xl hover:shadow-md transition">
+                                <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white text-xs">✓</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Loại bỏ Clo dư và vi khuẩn gây dị ứng</div>
+                                    <div class="text-sm text-gray-600">Bảo vệ da khỏi kích ứng</div>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 bg-gradient-soft rounded-xl hover:shadow-md transition">
+                                <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white text-xs">✓</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Chứng nhận FDA về độ an toàn lõi lọc</div>
+                                    <div class="text-sm text-gray-600">Đạt tiêu chuẩn quốc tế</div>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 bg-gradient-soft rounded-xl hover:shadow-md transition">
+                                <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white text-xs">✓</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Lắp đặt dễ dàng trong 5 phút</div>
+                                    <div class="text-sm text-gray-600">Không cần thợ, tự lắp được</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Team & Mission -->
+        <section class="py-20 bg-brand-blue text-white text-center">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-6 italic">"Working for a better parenting solution"</h2>
+                <p class="text-lg opacity-80 max-w-2xl mx-auto mb-10">
+                    Đội ngũ PRESENT R&D liên tục nghiên cứu để tối ưu hóa sự thoải mái cho trẻ sơ sinh và trẻ nhỏ.
+                </p>
+                <div class="flex justify-center gap-4">
+                    <span class="px-4 py-2 border border-white/40 rounded-full text-sm">Korean Technology</span>
+                    <span class="px-4 py-2 border border-white/40 rounded-full text-sm">Ergonomic Design</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Customer Reviews -->
+        <section id="reviews" class="py-20 bg-gradient-soft">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">Cha mẹ trẻ tin dùng & lan tỏa</h2>
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-2 bg-yellow-50 px-4 py-2 rounded-full">
+                        <span class="text-2xl font-bold text-yellow-600">4.9/5.0</span>
+                        <span class="text-sm text-gray-600">★★★★★ Đánh giá trung bình</span>
+                    </div>
+                </div>
+                <div class="relative">
+                    <button id="reviews-prev" type="button" aria-label="Xem đánh giá trước" class="hidden md:flex items-center justify-center absolute -left-12 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg text-gray-700 hover:text-gray-900 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                        <span class="text-2xl">‹</span>
+                    </button>
+                    <button id="reviews-next" type="button" aria-label="Xem đánh giá tiếp theo" class="hidden md:flex items-center justify-center absolute -right-12 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg text-gray-700 hover:text-gray-900 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                        <span class="text-2xl">›</span>
+                    </button>
+                    <div class="overflow-hidden">
+                        <div id="reviews-track" class="flex gap-6 transition-transform duration-500">
+                            <!-- Review 1 -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all min-w-[280px] md:min-w-[320px] lg:min-w-[360px]">
+                                <div class="p-6">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center text-white font-bold">
+                                            L
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">Linh Chi</div>
+                                            <div class="text-xs text-gray-500">@linhchi_mom</div>
+                                        </div>
+                                        <div class="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                                            ✓ VERIFIED
+                                        </div>
+                                    </div>
+                                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                        "Công nghệ Hàn Quốc giúp mình hoàn toàn yên tâm. Da bé nhạy cảm nên vòi sen lọc nước DURI đúng là cứu tinh! 💙"
+                                    </p>
+                                    <div class="text-xs text-gray-400">1.2k người thích</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Review 2 -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all min-w-[280px] md:min-w-[320px] lg:min-w-[360px]">
+                                <div class="p-6">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                                            M
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">Mẹ Bun</div>
+                                            <div class="text-xs text-gray-500">@me_bun</div>
+                                        </div>
+                                        <div class="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                                            ✓ VERIFIED
+                                        </div>
+                                    </div>
+                                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                        "Nắp bồn cầu thiết kế cực kỳ chắc chắn, bé nhà mình tự đi vệ sinh mà không cần mẹ bế. Quá tiện! 👶"
+                                    </p>
+                                    <div class="text-xs text-gray-400">850 người thích</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Review 3 -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all min-w-[280px] md:min-w-[320px] lg:min-w-[360px]">
+                                <div class="p-6">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                                            H
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">Hà My</div>
+                                            <div class="text-xs text-gray-500">@hamy_mom</div>
+                                        </div>
+                                        <div class="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                                            ✓ VERIFIED
+                                        </div>
+                                    </div>
+                                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                        "Bao bì đẹp, sản phẩm chất lượng. Con nhà mình rất thích ghế potty, giờ đi vệ sinh tự lập hẳn! ✨"
+                                    </p>
+                                    <div class="text-xs text-gray-400">2.1k người thích</div>
+                                </div>
+                            </div>
+
+                            <!-- Review 4 -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all min-w-[280px] md:min-w-[320px] lg:min-w-[360px]">
+                                <div class="p-6">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-white font-bold">
+                                            T
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">Thu Hà</div>
+                                            <div class="text-xs text-gray-500">@thuha_mom</div>
+                                        </div>
+                                        <div class="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                                            ✓ VERIFIED
+                                        </div>
+                                    </div>
+                                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                        "Vòi sen lọc nước dễ lắp, nước ra êm dịu. Bé tắm xong da không bị khô như trước." 
+                                    </p>
+                                    <div class="text-xs text-gray-400">640 người thích</div>
+                                </div>
+                            </div>
+
+                            <!-- Review 5 -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all min-w-[280px] md:min-w-[320px] lg:min-w-[360px]">
+                                <div class="p-6">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold">
+                                            N
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">Ngọc Mai</div>
+                                            <div class="text-xs text-gray-500">@ngocmai</div>
+                                        </div>
+                                        <div class="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                                            ✓ VERIFIED
+                                        </div>
+                                    </div>
+                                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                        "Ghế potty chắc chắn, bé tự ngồi vững. Mình thích nhất phần đệm chống trượt." 
+                                    </p>
+                                    <div class="text-xs text-gray-400">990 người thích</div>
+                                </div>
+                            </div>
+
+                            <!-- Review 6 -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all min-w-[280px] md:min-w-[320px] lg:min-w-[360px]">
+                                <div class="p-6">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-sky-400 to-sky-600 rounded-full flex items-center justify-center text-white font-bold">
+                                            P
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">Phương Anh</div>
+                                            <div class="text-xs text-gray-500">@phuonganh</div>
+                                        </div>
+                                        <div class="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                                            ✓ VERIFIED
+                                        </div>
+                                    </div>
+                                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                        "Combo quá tiện, vừa potty vừa vòi sen. Mua một lần dùng lâu dài." 
+                                    </p>
+                                    <div class="text-xs text-gray-400">1.5k người thích</div>
+                                </div>
+                            </div>
+
+                            <!-- Review 7 -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all min-w-[280px] md:min-w-[320px] lg:min-w-[360px]">
+                                <div class="p-6">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-full flex items-center justify-center text-white font-bold">
+                                            A
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">Ánh Nguyệt</div>
+                                            <div class="text-xs text-gray-500">@anhnguyet</div>
+                                        </div>
+                                        <div class="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                                            ✓ VERIFIED
+                                        </div>
+                                    </div>
+                                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                        "Bé nhà mình sợ tắm, nhưng đổi sang vòi lọc DURI thì hợp tác hơn hẳn." 
+                                    </p>
+                                    <div class="text-xs text-gray-400">720 người thích</div>
+                                </div>
+                            </div>
+
+                            <!-- Review 8 -->
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all min-w-[280px] md:min-w-[320px] lg:min-w-[360px]">
+                                <div class="p-6">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
+                                            V
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">Vân Trang</div>
+                                            <div class="text-xs text-gray-500">@vantrang</div>
+                                        </div>
+                                        <div class="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                                            ✓ VERIFIED
+                                        </div>
+                                    </div>
+                                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                                    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                        "Hàng đẹp, đóng gói chắc chắn. Giao nhanh, tư vấn kỹ." 
+                                    </p>
+                                    <div class="text-xs text-gray-400">530 người thích</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Research & Certification -->
+        <section id="certification" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-16 mb-16">
+                    <div class="md:w-1/2">
+                        <h2 class="text-4xl font-bold mb-6 leading-tight">
+                            Viện nghiên cứu công nghệ<br>
+                            chăm sóc trẻ em<br>
+                            <span class="text-gray-600">được chính phủ chứng nhận</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 leading-relaxed">
+                            Tạo ra những sản phẩm an toàn nhất cho trẻ em<br>
+                            bằng cách nghiên cứu quá trình phát triển của trẻ
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center gap-6">
+                        <div class="bg-gray-50 rounded-lg p-4 w-48 h-64 flex items-center justify-center shadow-md">
+                            <img src="images/cert1.png" alt="Chứng nhận 1" class="w-full h-full object-contain">
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 w-48 h-64 flex items-center justify-center shadow-md">
+                            <img src="images/cert2.png" alt="Chứng nhận 2" class="w-full h-full object-contain">
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 w-48 h-64 flex items-center justify-center shadow-md">
+                            <img src="images/cert3.png" alt="Chứng nhận 3" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-5 gap-8 pt-12 border-t border-gray-200">
+                    <div class="text-center px-4 flex flex-col items-center justify-between h-full">
+                        <div class="text-sm font-semibold text-gray-600 mb-2 min-h-[48px]">Quyền sở hữu<br>trí tuệ</div>
+                        <div class="text-5xl font-bold text-gray-900">104<sup class="text-2xl">+</sup></div>
+                    </div>
+                    <div class="text-center px-4 flex flex-col items-center justify-between h-full border-l border-gray-200">
+                        <div class="text-sm font-semibold text-gray-600 mb-2 min-h-[48px]">Bằng sáng chế</div>
+                        <div class="text-5xl font-bold text-gray-900">3<sup class="text-2xl">+</sup></div>
+                    </div>
+                    <div class="text-center px-4 flex flex-col items-center justify-between h-full border-l border-gray-200">
+                        <div class="text-sm font-semibold text-gray-600 mb-2 min-h-[48px]">Kiểu dáng công nghiệp<br>& thiết kế</div>
+                        <div class="text-5xl font-bold text-gray-900">45<sup class="text-2xl">+</sup></div>
+                    </div>
+                    <div class="text-center px-4 flex flex-col items-center justify-between h-full border-l border-gray-200">
+                        <div class="text-sm font-semibold text-gray-600 mb-2 min-h-[48px]">Thương hiệu<br>quốc tế</div>
+                        <div class="text-5xl font-bold text-gray-900">43<sup class="text-2xl">+</sup></div>
+                    </div>
+                    <div class="text-center px-4 flex flex-col items-center justify-between h-full border-l border-gray-200">
+                        <div class="text-sm font-semibold text-gray-600 mb-2 min-h-[48px]">Bản quyền</div>
+                        <div class="text-5xl font-bold text-gray-900">13<sup class="text-2xl">+</sup></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Price Table -->
+        <section id="pricing" class="py-20 bg-gradient-soft">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">Gói sản phẩm ưu đãi</h2>
+                <p class="text-center text-gray-600 mb-16">🎁 Miễn phí vận chuyển toàn quốc - Bảo hành 24 tháng</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Basic -->
+                    <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center flex flex-col h-full transform hover:-translate-y-2 hover:ring-2 hover:ring-gray-300">
+                        <h3 class="font-bold text-gray-500 uppercase mb-4 text-sm tracking-widest">Cơ bản</h3>
+                        <div class="mb-6 flex items-center justify-center bg-gradient-soft rounded-xl p-4" style="height:200px;">
+                            <img src="images/pottyseat4.0.jpg" alt="DURI Potty Seat 4.0" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="text-2xl font-bold mb-4">DURI Potty Seat 4.0</div>
+                        <div class="text-sm text-gray-600 mb-6">Giải pháp toilet training thông minh</div>
+                        <a href="#form" class="block py-4 border-2 border-brand-blue brand-blue font-bold rounded-xl hover:bg-brand-blue hover:text-white transition-all mt-auto text-lg">Chọn Gói →</a>
+                    </div>
+                    <!-- Premium -->
+                    <div class="bg-white p-8 rounded-3xl shadow-2xl text-center border-4 border-brand-blue relative flex flex-col h-full transform scale-105 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.07] hover:shadow-2xl">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse">
+                            🔥 Bán chạy nhất
+                        </div>
+                        <h3 class="font-bold text-gray-700 uppercase mb-4 text-sm tracking-widest">Premium Combo</h3>
+                        <div class="mb-6 flex gap-2 items-center justify-center bg-gradient-soft rounded-xl p-4" style="height: 200px;">
+                            <img src="images/pottyseat4.0.jpg" alt="Potty Seat" class="max-h-full w-1/2 object-contain">
+                            <img src="images/ato.jpg" alt="Filter Showerhead" class="max-h-full w-1/2 object-contain">
+                        </div>
+                        <div class="text-2xl font-bold mb-4">Potty Seat + Filter Showerhead</div>
+                        <div class="text-sm text-gray-600 mb-6">Combo chăm sóc toàn diện cho bé</div>
+                        <a href="#form" class="block py-4 bg-brand-blue text-white font-bold rounded-xl hover:bg-gray-700 transition-all shadow-lg mt-auto text-lg relative overflow-hidden group">
+                            <span class="relative z-10">Mua Ngay - Giảm 30% →</span>
+                            <div class="absolute inset-0 shimmer"></div>
+                        </a>
+                    </div>
+                    <!-- Full -->
+                    <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center flex flex-col h-full transform hover:-translate-y-2 hover:ring-2 hover:ring-gray-300">
+                        <h3 class="font-bold text-gray-500 uppercase mb-4 text-sm tracking-widest">Toàn diện</h3>
+                        <div class="mb-6 flex items-center justify-center bg-gradient-soft rounded-xl p-4" style="height: 200px;">
+                            <div class="grid grid-cols-3 gap-2">
+                                <img src="images/f1.jpg" alt="Product 1" class="w-24 h-20 object-cover rounded">
+                                <img src="images/f2.jpg" alt="Product 2" class="w-24 h-20 object-cover rounded">
+                                <img src="images/f3.jpg" alt="Product 3" class="w-24 h-20 object-cover rounded">
+                                <img src="images/f4.jpg" alt="Product 4" class="w-24 h-20 object-cover rounded">
+                                <img src="images/f5.jpg" alt="Product 5" class="w-24 h-20 object-cover rounded">
+                                <img src="images/f6.jpg" alt="Product 6" class="w-24 h-20 object-cover rounded">
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold mb-4">Full DURI Care Set</div>
+                        <div class="text-sm text-gray-600 mb-6">Trọn bộ 6 sản phẩm cao cấp</div>
+                        <a href="#form" class="block py-4 border-2 border-brand-blue brand-blue font-bold rounded-xl hover:bg-brand-blue hover:text-white transition-all mt-auto text-lg">Xem Chi Tiết →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: FAQ -->
+        <section id="faq" class="py-20">
+            <div class="container mx-auto px-6 max-w-2xl">
+                <h2 class="text-2xl font-bold mb-10 text-center">Câu hỏi thường gặp (FAQ)</h2>
+                <div class="divide-y divide-gray-200">
+                    <details class="py-4 group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold">Nắp có vừa với bồn cầu tiêu chuẩn không? <span class="group-open:rotate-180 transition">▼</span></summary>
+                        <p class="mt-4 text-gray-600 text-sm">Có, DURI Potty Seat được thiết kế chuẩn 300-470-80mm, tương thích với hầu hết các hãng bồn cầu lớn.</p>
+                    </details>
+                    <details class="py-4 group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold">Lõi lọc vòi sen bao lâu phải thay? <span class="group-open:rotate-180 transition">▼</span></summary>
+                        <p class="mt-4 text-gray-600 text-sm">Trung bình từ 2-4 tháng tùy vào chất lượng nước tại nơi bạn sinh sống.</p>
+                    </details>
+                    <details class="py-4 group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold">Sản phẩm có phù hợp cho trẻ sơ sinh không? <span class="group-open:rotate-180 transition">▼</span></summary>
+                        <p class="mt-4 text-gray-600 text-sm">Có. Vòi sen lọc nước dịu nhẹ cho da nhạy cảm và vật liệu an toàn không chứa BPA.</p>
+                    </details>
+                    <details class="py-4 group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold">Lắp đặt có cần thợ không? <span class="group-open:rotate-180 transition">▼</span></summary>
+                        <p class="mt-4 text-gray-600 text-sm">Không cần. Tất cả đều có thể tự lắp trong vài phút theo hướng dẫn đi kèm.</p>
+                    </details>
+                    <details class="py-4 group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold">Chế độ bảo hành và đổi trả như thế nào? <span class="group-open:rotate-180 transition">▼</span></summary>
+                        <p class="mt-4 text-gray-600 text-sm">Bảo hành 24 tháng. Hỗ trợ đổi trả theo chính sách nếu sản phẩm có lỗi từ nhà sản xuất.</p>
+                    </details>
+                    <details class="py-4 group cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold">Thời gian giao hàng mất bao lâu? <span class="group-open:rotate-180 transition">▼</span></summary>
+                        <p class="mt-4 text-gray-600 text-sm">Thông thường từ 1-3 ngày làm việc tùy khu vực. Nội thành có thể nhận nhanh trong 24h.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 11 & 12: CTA & Form -->
+        <section id="form" class="py-24 bg-gradient-soft text-gray-900">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row gap-16 items-center">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-4xl font-bold mb-6">Nhận tư vấn cá nhân hóa</h2>
+                    <p class="text-gray-600 mb-10 text-lg">Đội ngũ chuyên gia sẽ gọi lại cho bạn trong 15 phút để tư vấn giải pháp phù hợp nhất với độ tuổi của bé.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg">SHOP NOW ON SHOPEE</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 w-full max-w-md bg-white p-8 rounded-3xl shadow-2xl">
+                    <form id="duriLandingForm" class="text-gray-800">
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-2">Họ và tên</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 outline-none">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-2">Số điện thoại</label>
+                            <input type="tel" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 outline-none">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-2">Độ tuổi của bé</label>
+                            <input type="text" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 outline-none">
+                        </div>
+                        <button type="submit" class="w-full bg-brand-blue text-white py-4 rounded-lg font-bold text-lg hover:bg-gray-700 transition shadow-lg">
+                            Gửi Yêu Cầu Tư Vấn
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: Footer -->
+        <footer class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-700 text-gray-200 pt-16 pb-10 border-t border-white/5">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-4 gap-10">
+                    <div>
+                        <div class="text-2xl font-bold text-white mb-4 tracking-tight">DURI</div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                            Đồng hành cùng cha mẹ Việt trong hành trình chăm sóc bé. Giải pháp an toàn, thông minh và tiện lợi cho gia đình hiện đại.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-3 py-1 rounded-full bg-white/10 text-xs text-gray-200">FDA Certified</span>
+                            <span class="px-3 py-1 rounded-full bg-white/10 text-xs text-gray-200">BPA-Free</span>
+                            <span class="px-3 py-1 rounded-full bg-white/10 text-xs text-gray-200">Korean Tech</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Liên hệ (Contact Us)</h4>
+                        <div class="space-y-3 text-sm text-gray-300">
+                            <div class="font-semibold text-gray-200">CÔNG TY TNHH PRESENT KOREA</div>
+                            <div>Trụ sở chính: Busan, Hàn Quốc</div>
+                            <div>Văn phòng đại diện: 669 Đỗ Mười, Phường Linh Xuân, TP. Thủ Đức (TP. HCM)</div>
+                            <div>Hotline: 037.355.159</div>
+                            <div>Email: partner@present.com</div>
+                            <div>8:00 - 17:30 (Thứ 2 - Thứ 7)</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Hỗ trợ khách hàng (Support)</h4>
+                        <div class="space-y-3 text-sm text-gray-300">
+                            <a href="#faq" class="block hover:text-white transition">Câu hỏi thường gặp (FAQs)</a>
+                            <a href="#form" class="block hover:text-white transition">Tư vấn sản phẩm</a>
+                            <a href="#pricing" class="block hover:text-white transition">Gói ưu đãi</a>
+                            <a href="#" class="block hover:text-white transition">Hướng dẫn bảo hành</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Chính sách (Policy)</h4>
+                        <div class="space-y-3 text-sm text-gray-300">
+                            <a href="#" class="block hover:text-white transition">Chính sách bảo mật thông tin</a>
+                            <a href="#" class="block hover:text-white transition">Điều khoản sử dụng</a>
+                            <a href="#" class="block hover:text-white transition">Chính sách đổi trả & bảo hành</a>
+                            <a href="#" class="block hover:text-white transition">Vận chuyển & thanh toán</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/10 mt-12 pt-8 text-center">
+                    <div class="text-white font-semibold mb-4">Kết nối với chúng tôi</div>
+                    <div class="flex justify-center gap-4 mb-6">
+                        <a href="#" aria-label="Facebook" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                            <img src="https://cdn.simpleicons.org/facebook/ffffff" alt="Facebook" class="w-5 h-5">
+                        </a>
+                        <a href="#" aria-label="Instagram" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                            <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram" class="w-5 h-5">
+                        </a>
+                        <a href="#" aria-label="Zalo" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                            <img src="https://cdn.simpleicons.org/zalo/ffffff" alt="Zalo" class="w-5 h-5">
+                        </a>
+                    </div>
+                    <div class="text-xs text-gray-400">DURI © 2024. All rights reserved.</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- PHẦN 13: THANK YOU PAGE (Ẩn mặc định) -->
+    <div id="thank-you-page" class="hidden fixed inset-0 bg-white z-[100] flex items-center justify-center p-6 text-center" style="display: none;">
+        <div class="max-w-md">
+            <div class="text-6xl mb-6">✨</div>
+            <h2 class="text-3xl font-bold mb-4 text-gray-900">Cảm ơn bạn đã tin dùng DURI!</h2>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">Yêu cầu của bạn đã được tiếp nhận. Chuyên gia DURI sẽ liên hệ tư vấn trong 15 phút tới.</p>
+            <div class="bg-blue-50 p-6 rounded-2xl mb-8">
+                <p class="font-bold text-blue-600 mb-2">🎁 Ưu đãi đặc biệt:</p>
+                <p class="text-sm">Gia nhập cộng đồng "Smart Mom" để nhận các mẹo nuôi dạy con từ Hàn Quốc.</p>
+                <a href="#" class="mt-3 inline-block font-bold brand-blue underline underline-offset-4">Tham gia cộng đồng ngay</a>
+            </div>
+            <button onclick="backToHome()" class="text-gray-400 hover:text-gray-600 transition font-medium">Quay lại trang chính</button>
+        </div>
+    </div>
+
+    <script>
+        const landingForm = document.getElementById('duriLandingForm');
+        const mainContent = document.getElementById('main-content');
+        const thankYouPage = document.getElementById('thank-you-page');
+
+        // Logic khi gửi Form
+        landingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ẩn trang chính và hiện trang cảm ơn
+            mainContent.classList.add('hidden');
+            thankYouPage.classList.remove('hidden');
+            thankYouPage.style.display = 'flex'; // Hiện linh hoạt theo layout flex
+            
+            window.scrollTo(0, 0);
+        });
+
+        // Hàm quay lại trang chủ từ trang cảm ơn
+        function backToHome() {
+            thankYouPage.classList.add('hidden');
+            thankYouPage.style.display = 'none';
+            mainContent.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+        
+        // Countdown Timer
+        const countdownEnd = new Date(Date.now() + 12 * 60 * 60 * 1000);
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = Math.max(0, countdownEnd - now);
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Social Proof Notification Popup
+        const notifications = [
+            { name: 'Minh Anh', location: 'Hà Nội', time: '2 phút trước' },
+            { name: 'Thu Hà', location: 'TP.HCM', time: '5 phút trước' },
+            { name: 'Lan Phương', location: 'Đà Nẵng', time: '8 phút trước' },
+            { name: 'Ngọc Mai', location: 'Hải Phòng', time: '12 phút trước' }
+        ];
+        
+        let notificationIndex = 0;
+        
+        function showNotification() {
+            const notification = notifications[notificationIndex];
+            
+            // Create notification element
+            const notifEl = document.createElement('div');
+            notifEl.className = 'notification-popup fixed bottom-6 right-6 bg-white rounded-xl shadow-xl p-4 max-w-sm z-50 border border-gray-100';
+            notifEl.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-brand-blue rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                        ${notification.name.charAt(0)}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="font-semibold text-sm text-gray-900">${notification.name} vừa nhận tư vấn</div>
+                        <div class="text-xs text-gray-500 mt-1">${notification.location} • ${notification.time}</div>
+                    </div>
+                    <div class="text-green-500 text-xl">✓</div>
+                </div>
+            `;
+            
+            document.body.appendChild(notifEl);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                notifEl.style.opacity = '0';
+                notifEl.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => notifEl.remove(), 500);
+            }, 5000);
+            
+            notificationIndex = (notificationIndex + 1) % notifications.length;
+        }
+        
+        // Show first notification after 3 seconds
+        setTimeout(showNotification, 3000);
+        
+        // Show notification every 15 seconds
+        setInterval(showNotification, 15000);
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const logo = document.getElementById('logo');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const ctaButton = document.getElementById('cta-button');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                // Scrolled down - dark navbar
+                navbar.classList.remove('bg-white/90');
+                navbar.classList.add('bg-gray-900');
+                navbar.classList.add('shadow-xl');
+                
+                logo.classList.remove('brand-blue');
+                logo.classList.add('text-white');
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-gray-800');
+                    link.classList.add('text-white');
+                });
+                
+                ctaButton.classList.remove('bg-brand-blue');
+                ctaButton.classList.add('bg-white');
+                ctaButton.classList.remove('text-white');
+                ctaButton.classList.add('text-gray-900');
+            } else {
+                // Top of page - light navbar
+                navbar.classList.remove('bg-gray-900');
+                navbar.classList.remove('shadow-xl');
+                navbar.classList.add('bg-white/90');
+                
+                logo.classList.remove('text-white');
+                logo.classList.add('brand-blue');
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-800');
+                });
+                
+                ctaButton.classList.remove('bg-white');
+                ctaButton.classList.remove('text-gray-900');
+                ctaButton.classList.add('bg-brand-blue');
+                ctaButton.classList.add('text-white');
+            }
+        });
+
+        // Reviews carousel
+        const reviewsTrack = document.getElementById('reviews-track');
+        const reviewsPrev = document.getElementById('reviews-prev');
+        const reviewsNext = document.getElementById('reviews-next');
+        let reviewIndex = 0;
+
+        function getVisibleReviews() {
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 768) return 2;
+            return 1;
+        }
+
+        function updateReviewsCarousel() {
+            if (!reviewsTrack) return;
+            const cards = reviewsTrack.children;
+            if (!cards.length) return;
+
+            const styles = getComputedStyle(reviewsTrack);
+            const gap = parseFloat(styles.gap || styles.columnGap || '0');
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const step = cardWidth + gap;
+            const maxIndex = Math.max(0, cards.length - getVisibleReviews());
+
+            reviewIndex = Math.min(reviewIndex, maxIndex);
+            reviewsTrack.style.transform = `translateX(${-reviewIndex * step}px)`;
+
+            if (reviewsPrev) reviewsPrev.disabled = reviewIndex === 0;
+            if (reviewsNext) reviewsNext.disabled = reviewIndex === maxIndex;
+        }
+
+        if (reviewsPrev && reviewsNext) {
+            reviewsPrev.addEventListener('click', function() {
+                reviewIndex = Math.max(0, reviewIndex - 1);
+                updateReviewsCarousel();
+            });
+
+            reviewsNext.addEventListener('click', function() {
+                reviewIndex = reviewIndex + 1;
+                updateReviewsCarousel();
+            });
+        }
+
+        window.addEventListener('resize', updateReviewsCarousel);
+        updateReviewsCarousel();
+    </script>
+
+</body>
+</html>
